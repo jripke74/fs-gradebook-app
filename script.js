@@ -65,10 +65,30 @@ function getGrade(score) {
 // 17. Your hasPassingGrade function should return false if the grade is an "F".
 // 18. Your hasPassingGrade function should return true for all passing grades.
 function hasPassingGrade(score) {
+  return getGrade(score) !== "F";
+}
+
+// 5. You should have a function named studentMsg that takes an array of scores and
+// a student score as the parameters. The function should return a string with the format:
+// "Class average: average-goes-here. Your grade: grade-goes-here. You passed the course.", if the student passed the course.
+// "Class average: average-goes-here. Your grade: grade-goes-here. You failed the course.", if the student failed the course.
+// Replace average-goes-here with the average of total scores and grade-goes-here with the student's grade. Use getAverage
+// to get the average score and getGrade to get the student's grade.
+// 19. You should have a function named studentMsg.
+// 20. studentMsg([92, 88, 12, 77, 57, 100, 67, 38, 97, 89], 37) should return the following message:
+// "Class average: 71.7. Your grade: F. You failed the course.".
+// 21. studentMsg([56, 23, 89, 42, 75, 11, 68, 34, 91, 19], 100) should return the following message: "Class average:
+// 50.8. Your grade: A+. You passed the course.".
+// Failed: 22. Your studentMsg function should return the correct message based on the student's score and the class average.
+function studentMsg(scores, score) {
+  const classAverage = getAverage(scores);
   const grade = getGrade(score);
-  if (grade === "F") {
-    return false;
+  const passing = hasPassingGrade(grade);
+  let msg = `Class average: ${classAverage}. Your grade: ${grade}.`;
+  if (passing) {
+    msg += " You passed the course.";
   } else {
-    return true;
+    msg += " You failed the course.";
   }
+  return msg;
 }
