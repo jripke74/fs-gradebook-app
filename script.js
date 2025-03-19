@@ -82,8 +82,9 @@ function hasPassingGrade(score) {
 // Failed: 22. Your studentMsg function should return the correct message based on the student's score and the class average.
 function studentMsg(scores, score) {
   const classAverage = getAverage(scores);
+  const passing = hasPassingGrade(score);
   const grade = getGrade(score);
-  const passing = hasPassingGrade(grade);
+  console.log(passing);
   let msg = `Class average: ${classAverage}. Your grade: ${grade}.`;
   if (passing) {
     msg += " You passed the course.";
